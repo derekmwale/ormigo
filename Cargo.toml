@@ -2,6 +2,13 @@
 name = "ormigo"
 version = "0.1.0"
 edition = "2024"
+authors = ["Derek Mwale derek.mwale@gmail.com"]
+description = "A fluent, async ORM for Rust (SQLite-first)"
+repository = "https://github.com/derekmwale/ormigo"
+license = "MIT"
+keywords = ["orm", "rust", "sqlite", "async"]
+categories = ["database", "web-programming", "development-tools"]
+
 
 [dependencies]
 tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
