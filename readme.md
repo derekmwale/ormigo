@@ -1,3 +1,6 @@
+https://crates.io/crates/ormigo
+
+
 1. Set up your Rust project
     Make sure you have Rust installed.
     Check with:
