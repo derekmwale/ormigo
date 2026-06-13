@@ -107,7 +107,7 @@ https://crates.io/crates/ormigo
 
 
 5. 
-#[tokio::test]
+        #[tokio::test]
         let inserted = db
             .execute_insert(
                 db.insert("users")
@@ -120,7 +120,7 @@ https://crates.io/crates/ormigo
             println!("Inserted {} row(s)", inserted);
 
 6. 
-#[tokio::test]
+            #[tokio::test]
             let user_id = db
                 .execute_insert_returning_id(
                  db.insert("users")
@@ -132,7 +132,7 @@ https://crates.io/crates/ormigo
             println!("New User ID: {}", user_id);
 
 7. 
-#[tokio::test]
+            #[tokio::test]
             let rows = db
                 .execute_update(
                     db.update("users")
