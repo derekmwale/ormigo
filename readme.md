@@ -108,38 +108,38 @@ https://crates.io/crates/ormigo
 
 5. 
 #[tokio::test]
-let inserted = db
-    .execute_insert(
-        db.insert("users")
-            .value("name", "Derek")
-            .value("email", "derek@example.com")
-            .value("age", 25)
-    )
-    .await?;
+        let inserted = db
+            .execute_insert(
+                db.insert("users")
+                .value("name", "Derek")
+                .value("email", "derek@example.com")
+                .value("age", 25)
+            )
+                .await?;
 
-println!("Inserted {} row(s)", inserted);
+            println!("Inserted {} row(s)", inserted);
 
 6. 
 #[tokio::test]
-let user_id = db
-    .execute_insert_returning_id(
-        db.insert("users")
-            .value("name", "Derek")
-            .value("email", "derek@example.com")
-    )
-    .await?;
+            let user_id = db
+                .execute_insert_returning_id(
+                 db.insert("users")
+                        .value("name", "Derek")
+                        .value("email", "derek@example.com")
+                )
+                .await?;
 
-println!("New User ID: {}", user_id);
+            println!("New User ID: {}", user_id);
 
 7. 
 #[tokio::test]
-let rows = db
-    .execute_update(
-        db.update("users")
-            .set("name", "Derek Mwale")
-            .set("age", 25)
-            .filter("id = 1")
-    )
-    .await?;
+            let rows = db
+                .execute_update(
+                    db.update("users")
+                        .set("name", "Derek Mwale")
+                        .set("age", 25)
+                        .filter("id = 1")
+                )
+                .await?;
 
-println!("Updated {} row(s)", rows);
+            println!("Updated {} row(s)", rows);
