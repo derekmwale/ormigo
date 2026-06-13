@@ -2,6 +2,8 @@
 pub mod builder;
 pub mod insert;
 pub mod update;
+pub mod delete;
+
 
 
 pub mod executor;
@@ -11,6 +13,7 @@ pub mod error;
 pub use update::UpdateBuilder;
 pub use insert::InsertBuilder;
 pub use builder::QueryBuilder;
+pub use delete::DeleteBuilder;
 
 pub use executor::OrmigoDB;
 pub use model::*;

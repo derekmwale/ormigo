@@ -143,3 +143,15 @@ https://crates.io/crates/ormigo
                 .await?;
 
             println!("Updated {} row(s)", rows);
+
+8.
+
+            #[tokio::test]
+            let deleted = db
+                .execute_delete(
+                    db.delete("users")
+                        .filter("id = 1")
+                )
+                .await?;
+
+            println!("Deleted {} row(s)", deleted);

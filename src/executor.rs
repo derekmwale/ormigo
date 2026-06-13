@@ -4,6 +4,7 @@ use sqlx::{sqlite::SqlitePoolOptions, SqlitePool};
 use crate::builder::QueryBuilder;
 use crate::insert::InsertBuilder;
 use crate::update::UpdateBuilder;
+use crate::delete::DeleteBuilder;
 
 use crate::error::OrmigoError;
 
@@ -84,6 +85,27 @@ impl OrmigoDB {
     ) -> Result<u64, OrmigoError> {
 
         let sql = update.build();
+
+        let result = sqlx::query(&sql)
+            .execute(&self.pool)
+            .await?;
+
+        Ok(result.rows_affected())
+    }
+
+    pub fn delete(
+        &self,
+        table: &str,
+    ) -> DeleteBuilder {
+        DeleteBuilder::new(table)
+    }
+
+    pub async fn execute_delete(
+        &self,
+        delete: DeleteBuilder,
+    ) -> Result<u64, OrmigoError> {
+
+        let sql = delete.build();
 
         let result = sqlx::query(&sql)
             .execute(&self.pool)

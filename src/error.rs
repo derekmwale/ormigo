@@ -7,6 +7,8 @@ pub enum OrmigoError {
 #[error("Database error: {0}")]
 SqlxError(#[from] sqlx::Error),
 
+#[error("Missing WHERE clause")]
+MissingWhereClause,
 
 #[error("Other error: {0}")]
 Other(String),
