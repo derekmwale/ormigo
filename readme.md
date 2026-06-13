@@ -106,7 +106,9 @@ https://crates.io/crates/ormigo
     test_fetch_all → checks that the ORM can fetch data from SQLite.
 
 
-5. let inserted = db
+5. 
+#[tokio::test]
+let inserted = db
     .execute_insert(
         db.insert("users")
             .value("name", "Derek")
@@ -117,7 +119,9 @@ https://crates.io/crates/ormigo
 
 println!("Inserted {} row(s)", inserted);
 
-6. let user_id = db
+6. 
+#[tokio::test]
+let user_id = db
     .execute_insert_returning_id(
         db.insert("users")
             .value("name", "Derek")
@@ -127,7 +131,9 @@ println!("Inserted {} row(s)", inserted);
 
 println!("New User ID: {}", user_id);
 
-7. let rows = db
+7. 
+#[tokio::test]
+let rows = db
     .execute_update(
         db.update("users")
             .set("name", "Derek Mwale")
