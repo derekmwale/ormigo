@@ -126,3 +126,14 @@ println!("Inserted {} row(s)", inserted);
     .await?;
 
 println!("New User ID: {}", user_id);
+
+7. let rows = db
+    .execute_update(
+        db.update("users")
+            .set("name", "Derek Mwale")
+            .set("age", 25)
+            .filter("id = 1")
+    )
+    .await?;
+
+println!("Updated {} row(s)", rows);

@@ -3,6 +3,7 @@
 use sqlx::{sqlite::SqlitePoolOptions, SqlitePool};
 use crate::builder::QueryBuilder;
 use crate::insert::InsertBuilder;
+use crate::update::UpdateBuilder;
 
 use crate::error::OrmigoError;
 
@@ -70,5 +71,25 @@ impl OrmigoDB {
         Ok(result.last_insert_rowid())
     }
 
+    pub fn update(
+        &self,
+        table: &str,
+    ) -> UpdateBuilder {
+        UpdateBuilder::new(table)
+    }
+
+    pub async fn execute_update(
+        &self,
+        update: UpdateBuilder,
+    ) -> Result<u64, OrmigoError> {
+
+        let sql = update.build();
+
+        let result = sqlx::query(&sql)
+            .execute(&self.pool)
+            .await?;
+
+        Ok(result.rows_affected())
+    }
 
 }
