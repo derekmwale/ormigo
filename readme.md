@@ -101,3 +101,25 @@
     cargo test
     test_query_builder → checks that the SQL string is built correctly.
     test_fetch_all → checks that the ORM can fetch data from SQLite.
+
+5. Insert 
+let inserted = db
+    .execute_insert(
+        db.insert("users")
+            .value("name", "Derek")
+            .value("email", "derek@example.com")
+            .value("age", 25)
+    )
+    .await?;
+
+println!("Inserted {} row(s)", inserted);
+
+6.let user_id = db
+    .execute_insert_returning_id(
+        db.insert("users")
+            .value("name", "Derek")
+            .value("email", "derek@example.com")
+    )
+    .await?;
+
+println!("New User ID: {}", user_id);
